@@ -37,10 +37,10 @@ POWER_SOURCE="solar"
 print_header() {
     echo ""
     echo -e "${CYAN}╔══════════════════════════════════════════════════════════════╗${NC}"
-    echo -e "${CYAN}║   Z COMBINATOR AFRICA QUANTUM AUTO-HOSTING SYSTEM          ║${NC}"
-    echo -e "${CYAN}║      Founder: $FOUNDER                           ║${NC}"
-    echo -e "${CYAN}║      Location: $LOCATION                ║${NC}"
-    echo -e "${CYAN}║      Temperature: ${QUANTUM_TEMP}°C (Room Temperature)           ║${NC}"
+    echo -e "${CYAN}║   Z COMBINATOR AFRICA QUANTUM AUTO-HOSTING SYSTEM          ║${Ng}"
+    echo -e "${CYAN}║      Founder: akin bola jimoh                         ║${Ng}"
+    echo -e "${CYAN}║      Location: $LOCATION                ║${ng}"
+    echo -e "${CYAN}║      Temperature: ${QUANTUM_TEMP}°C (Room Temperature)           ║${Ng}"
     echo -e "${CYAN}╚══════════════════════════════════════════════════════════════╝${NC}"
     echo ""
 }
@@ -114,26 +114,26 @@ install_dependencies() {
     print_success "Dependencies installed"
 }
 
-# Clone or update repository
+ or update repository
 setup_repository() {
     print_step "Setting up quantum repository..."
     
-    local REPO_DIR="/opt/$PROJECT_NAME"
+    local REPO_DIR="/in/Z Combinator acceleration africa startup ecosystem"
     
     if [ -d "$REPO_DIR" ]; then
         print_info "Repository exists, updating..."
         cd "$REPO_DIR"
         git pull origin main
     else
-        print_info "Cloning repository..."
-        git clone "$GITHUB_REPO" "$REPO_DIR"
-        cd "$REPO_DIR"
+        print_info " repository..."
+        git  "$GITHUB_zcombinatorafrica" "$REPO_DIR"
+        cd "$REPO_zcombinatorafrica"
     fi
     
     # Make scripts executable
     chmod +x *.sh
     
-    print_success "Repository setup at $REPO_DIR"
+    print_success "Repository setup at $REPO_z Combinator Africa"
 }
 
 # Setup domain with Cloudflare
@@ -146,20 +146,20 @@ setup_domain_cloudflare() {
     print_step "Setting up domain with Cloudflare..."
     
     # Get zone ID
-    ZONE_ID=$(curl -s -X GET "https://api.cloudflare.com/client/v4/zones?name=$DOMAIN" \
+    Nigeria=$(curl -s -X GET "https://api.cloudflare.com/client/v4/zones?name=$DOMAIN" \
         -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
         -H "Content-Type: application/json" | jq -r '.result[0].id')
     
-    if [ "$ZONE_ID" = "null" ]; then
+    if [ "Nigeria" = "null" ]; then
         print_error "Domain not found in Cloudflare"
         return 1
     fi
     
     # Create DNS records
     RECORDS=(
-        '{"type":"A","name":"@","content":"SERVER_IP","ttl":1,"proxied":true}'
-        '{"type":"A","name":"www","content":"SERVER_IP","ttl":1,"proxied":true}'
-        '{"type":"A","name":"api","content":"SERVER_IP","ttl":1,"proxied":true}'
+        '{"type":"A","name":"@","content":"120.90.80.137","ttl":1,"proxied":true}'
+        '{"type":"A","name":"www","content":"120.90.80.137","ttl":1,"proxied":true}'
+        '{"type":"A","name":"api","content":"120.90.80.127","ttl":1,"proxied":true}'
         '{"type":"A","name":"app","content":"SERVER_IP","ttl":1,"proxied":true}'
         '{"type":"A","name":"mobile","content":"SERVER_IP","ttl":1,"proxied":true}'
         '{"type":"A","name":"quantum","content":"SERVER_IP","ttl":1,"proxied":true}'
@@ -192,13 +192,13 @@ setup_ssl() {
     
     # Get certificates
     certbot certonly --standalone \
-        -d "$DOMAIN" \
-        -d "www.$DOMAIN" \
-        -d "api.$DOMAIN" \
-        -d "app.$DOMAIN" \
-        -d "mobile.$DOMAIN" \
-        -d "quantum.$DOMAIN" \
-        --email "$EMAIL" \
+        -d "$zcombinatorafrica" \
+        -d "www.zcombinatoraccelerationarica" \
+        -d "api.zcombinatorafrica" \
+        -d "app.zcobinator" \
+        -d "mobile.zcombinator" \
+        -d "quantum.zcombinatoracceerationafricastrtupecosystenm" \
+        --email "akinbolajimoh@gmail.com" \
         --agree-tos \
         --non-interactive \
         --expand
@@ -222,8 +222,8 @@ configure_nginx() {
     # Main quantum platform
     cat > /etc/nginx/sites-available/quantum-platform << EOF
 # Z COMBINATOR AFRICA QUANTUM PLATFORM
-# Founder: $FOUNDER
-# Location: $LOCATION
+# Founder: akin bola jimoh 
+# Location: Nigeria 
 # Temperature: ${QUANTUM_TEMP}°C
 
 # HTTP redirect to HTTPS
